@@ -32,8 +32,9 @@ public class Main {
 
         System.out.println("Потенциально работающие:");
         persons.stream()
-                .filter(person -> person.getAge() >= 18
-                        && person.getAge() <= (Sex.MAN == person.getSex() ? 65 : 60))
+                .filter(person -> Education.HIGHER == person.getEducation())
+                .filter(person -> person.getAge() >= 18)
+                .filter(person -> person.getAge() <= (Sex.MAN == person.getSex() ? 65 : 60))
                 .sorted(Comparator.comparing(Person::getFamily))
                 .collect(Collectors.toList())
                 .forEach(System.out::println);
